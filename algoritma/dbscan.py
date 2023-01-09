@@ -16,7 +16,11 @@ def dbscan_data(n,x,y):
     for i in range(n):
         data.insert(i, [x[i],y[i]])
     return pd.DataFrame(data, columns=['jumlah_tf','jumlah_tfidf'])
-    
+
+def dbscan_data_dari_csv():
+    df = pd.read_csv('./dataset/klastering.csv')    
+    return df
+
 def data_scale(data):
     return StandardScaler().fit_transform(data)
     
@@ -60,7 +64,7 @@ def plot_cluster(dbscan_labels,dbscan_data,dbscan_cluster,jumlah_cluster):
             "o",
             markerfacecolor=tuple(col),
             markeredgecolor="k",
-            markersize=14,
+            markersize=5,
         )
 
         xy = dbscan_data[class_member_mask & ~core_samples_mask]
@@ -70,7 +74,7 @@ def plot_cluster(dbscan_labels,dbscan_data,dbscan_cluster,jumlah_cluster):
             "o",
             markerfacecolor=tuple(col),
             markeredgecolor="k",
-            markersize=6,
+            markersize=5,
         )
 
     plt.title(f"Estimasi jumlah_cluster : {jumlah_cluster}")

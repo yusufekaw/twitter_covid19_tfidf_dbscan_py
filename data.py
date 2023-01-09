@@ -21,3 +21,10 @@ def kata_dasar():
 		kata_dasar = stemmer.stem(dokumen)
 		dataset.append(kata_dasar)
 	return dataset
+
+def data_sastrawi():
+	sumber_data = pd.read_csv("dataset/sastrawi.csv")
+	data_sastrawi = []
+	for i, kalimat in enumerate(sumber_data['Text']):
+		data_sastrawi.append(kalimat)
+	return data_sastrawi
